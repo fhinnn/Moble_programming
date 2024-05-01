@@ -8,21 +8,27 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="AmbilFoto"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="456dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_width="155dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="540dp"
+        android:text="Ambil Foto"
+        android:textColorHighlight="#4CAF50"
+        android:textColorLink="#4CAF50"
+        android:textSize="20sp"
+        app:iconTint="#8BC34A"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="128dp" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="372dp"
         android:layout_height="514dp"
-        app:srcCompat="@mipmap/ic_launcher"
-        tools:layout_editor_absoluteY="-58dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="20dp"
+        android:contextClickable="false"
         app:layout_constraintRight_toRightOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@color/design_default_color_secondary_variant"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

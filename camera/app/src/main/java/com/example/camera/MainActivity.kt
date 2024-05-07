@@ -16,6 +16,10 @@ import java.io.ByteArrayOutputStream
 import java.io.DataOutputStream
 import java.net.HttpURLConnection
 import java.net.URL
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var btn: Button
@@ -52,8 +56,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun sendImageToServer(bitmap: Bitmap) {
+
         GlobalScope.launch(Dispatchers.IO) {
             try {
+                val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+                val fileName = "image_$timeStamp.jpg"
                 val url = URL("http://18.141.217.96:8080/upload")
                 val connection = url.openConnection() as HttpURLConnection
                 connection.doOutput = true
@@ -69,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                 val imageDataBytes = imageData.toByteArray()
 
                 writer.writeBytes("--*****\r\n")
-                writer.writeBytes("Content-Disposition: form-data; name=\"file\";filename=\"image.jpg\"\r\n")
+                writer.writeBytes("Content-Disposition: form-data; name=\"file\";filename=\"$fileName\"\r\n")
                 writer.writeBytes("Content-Type: image/jpeg\r\n\r\n")
                 writer.write(imageDataBytes)
                 writer.writeBytes("\r\n")
